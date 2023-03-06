@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 namespace StudentManagerAPI.Controllers
 {
     [ApiController]
-    //[Authorize(Policy = "Administrator", Roles = "admin")]
+    [Authorize(Roles = "admin")]
     [Route("[controller]")]
     public class StudentController : ControllerBase
     {
