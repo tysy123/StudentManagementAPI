@@ -26,7 +26,7 @@ namespace StudentManagerAPI.Controllers
         }
 
         [AllowAnonymous]
-        [HttpPost("Login")]
+        [HttpPost("login")]
         public IActionResult Login([FromBody] LoginModel model)
         {
             try
@@ -34,17 +34,14 @@ namespace StudentManagerAPI.Controllers
 
                 var UsersAuth = _appSettings.UserAuth.SingleOrDefault(x => x.UserName == model.UserName && x.Password == model.PassWord);
                 if (UsersAuth == null)
-                {
-                    //return Ok(new HttpResultObject(null, "UserName or password is incorrect!"));
+                {                    
                     return Unauthorized("UserName or password is incorrect!");
                 }
 
                 var roles = GetRoles(UsersAuth);
 
                 var tokenString = GenerateJSONWebToken(roles, UsersAuth.Expires);
-                return Ok(new HttpResultObject(new { token = tokenString, expires = UsersAuth.Expires, email = UsersAuth.Email, user = UsersAuth.UserName }));
-                //return Ok(new { token = tokenString, expires = UsersAuth.Expires });
-
+                return Ok(new HttpResultObject(new { token = tokenString, expires = UsersAuth.Expires, email = UsersAuth.Email, user = UsersAuth.UserName }));                
             }
             catch (Exception)
             {

@@ -30,7 +30,7 @@ namespace StudentManagerAPI.Controllers
         /// Get All students API
         /// </summary>
         /// <returns></returns>
-        [HttpGet("GetStudents")]
+        [HttpGet("get-students")]
         public async Task<IActionResult> GetStudents()
         {
             try
@@ -52,7 +52,7 @@ namespace StudentManagerAPI.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [HttpGet("GetStudent/{id}")]
+        [HttpGet("get-student/{id}")]
         public async Task<IActionResult> GetStudentById(int id)
         {
             try
@@ -75,7 +75,7 @@ namespace StudentManagerAPI.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [HttpGet("GetStudentByFilter/{filter}/{keyword}")]
+        [HttpGet("get-student-by-filter/{filter}/{keyword}")]
         public async Task<IActionResult> GetStudentByFiter(FilterEnum filter, string keyword)
         {
             try
