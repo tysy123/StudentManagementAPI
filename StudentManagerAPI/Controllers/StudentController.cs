@@ -83,7 +83,7 @@ namespace StudentManagerAPI.Controllers
                 var par = new StudentFilterModel()
                 {
                     FilterType = filter,
-                    KeyWord = keyword
+                    KeyWord = keyword.Trim()
                 };
                 var data = await _studentService.GetStudentByFiter(par);
                 if (data.Count() > 0)

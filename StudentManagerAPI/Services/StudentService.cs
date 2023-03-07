@@ -35,10 +35,10 @@ namespace StudentManagerAPI.Services
             switch(filter.FilterType)
             {
                 case FilterEnum.Name:
-                    rs = _context.Students.Where(x => x.Name == filter.KeyWord).ToList();                    
+                    rs = _context.Students.Where(x => x.Name.Contains(filter.KeyWord)).ToList();                    
                     break;
                 case FilterEnum.PhoneNumber:
-                    rs = _context.Students.Where(x => x.PhoneNumber == filter.KeyWord).ToList();
+                    rs = _context.Students.Where(x => x.PhoneNumber.Contains(filter.KeyWord)).ToList();
                     break;
                 case FilterEnum.ID:
                     rs = _context.Students.Where(x => x.Id == Convert.ToInt32(filter.KeyWord)).ToList();
